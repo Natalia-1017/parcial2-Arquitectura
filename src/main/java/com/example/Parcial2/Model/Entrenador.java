@@ -3,43 +3,38 @@ package com.example.Parcial2.Model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "entrenador")
 public class Entrenador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_entrenador")
-    private Integer idEntrenador;
+    private Integer id_entrenador;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100)
     private String nombre;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100)
     private String especialidad;
 
     @ManyToOne
-    @JoinColumn(name = "id_equipo", nullable = false)
+    @JoinColumn(name = "id_equipo")
     private Equipo equipo;
-
 
     public Entrenador() {
     }
 
-
-    public Entrenador(Integer idEntrenador, String nombre, String especialidad, Equipo equipo) {
-        this.idEntrenador = idEntrenador;
+    public Entrenador(Integer id_entrenador, String nombre, String especialidad, Equipo equipo) {
+        this.id_entrenador = id_entrenador;
         this.nombre = nombre;
         this.especialidad = especialidad;
         this.equipo = equipo;
     }
 
-
-    public Integer getIdEntrenador() {
-        return idEntrenador;
+    public Integer getId_entrenador() {
+        return id_entrenador;
     }
 
-    public void setIdEntrenador(Integer idEntrenador) {
-        this.idEntrenador = idEntrenador;
+    public void setId_entrenador(Integer id_entrenador) {
+        this.id_entrenador = id_entrenador;
     }
 
     public String getNombre() {
@@ -66,16 +61,13 @@ public class Entrenador {
         this.equipo = equipo;
     }
 
-
-
     @Override
     public String toString() {
         return "Entrenador{" +
-                "idEntrenador=" + idEntrenador +
+                "id_entrenador=" + id_entrenador +
                 ", nombre='" + nombre + '\'' +
                 ", especialidad='" + especialidad + '\'' +
-                ", equipo=" + (equipo != null ? equipo.getNombre() : "null") +
+                ", equipo=" + equipo +
                 '}';
     }
 }
-

@@ -6,24 +6,18 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "equipo")
 public class Equipo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_equipo")
-    private Long idEquipo;
+    private Integer id_equipo;
 
-    @Column(name = "nombre", length = 100, nullable = false)
+    @Column(length = 100)
     private String nombre;
 
-    @Column(name = "ciudad", length = 100, nullable = false)
+    @Column(length = 100)
     private String ciudad;
-
-    @Column(name = "fundacion")
     private LocalDate fundacion;
-
-    // Relaciones
 
     @OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL)
     private List<Jugador> jugadores;
@@ -31,32 +25,24 @@ public class Equipo {
     @OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL)
     private List<Entrenador> entrenadores;
 
-    @OneToMany(mappedBy = "equipoLocal", cascade = CascadeType.ALL)
-    private List<Partido> partidosComoLocal;
-
-    @OneToMany(mappedBy = "equipoVisitante", cascade = CascadeType.ALL)
-    private List<Partido> partidosComoVisitante;
-
     public Equipo() {
     }
 
-    public Equipo(Long idEquipo, String nombre, String ciudad, LocalDate fundacion, List<Jugador> jugadores, List<Entrenador> entrenadores, List<Partido> partidosComoLocal, List<Partido> partidosComoVisitante) {
-        this.idEquipo = idEquipo;
+    public Equipo(Integer id_equipo, String nombre, String ciudad, LocalDate fundacion, List<Jugador> jugadores, List<Entrenador> entrenadores) {
+        this.id_equipo = id_equipo;
         this.nombre = nombre;
         this.ciudad = ciudad;
         this.fundacion = fundacion;
         this.jugadores = jugadores;
         this.entrenadores = entrenadores;
-        this.partidosComoLocal = partidosComoLocal;
-        this.partidosComoVisitante = partidosComoVisitante;
     }
 
-    public Long getIdEquipo() {
-        return idEquipo;
+    public Integer getId_equipo() {
+        return id_equipo;
     }
 
-    public void setIdEquipo(Long idEquipo) {
-        this.idEquipo = idEquipo;
+    public void setId_equipo(Integer id_equipo) {
+        this.id_equipo = id_equipo;
     }
 
     public String getNombre() {
@@ -99,34 +85,15 @@ public class Equipo {
         this.entrenadores = entrenadores;
     }
 
-    public List<Partido> getPartidosComoLocal() {
-        return partidosComoLocal;
-    }
-
-    public void setPartidosComoLocal(List<Partido> partidosComoLocal) {
-        this.partidosComoLocal = partidosComoLocal;
-    }
-
-    public List<Partido> getPartidosComoVisitante() {
-        return partidosComoVisitante;
-    }
-
-    public void setPartidosComoVisitante(List<Partido> partidosComoVisitante) {
-        this.partidosComoVisitante = partidosComoVisitante;
-    }
-
     @Override
     public String toString() {
         return "Equipo{" +
-                "idEquipo=" + idEquipo +
+                "id_equipo=" + id_equipo +
                 ", nombre='" + nombre + '\'' +
                 ", ciudad='" + ciudad + '\'' +
                 ", fundacion=" + fundacion +
                 ", jugadores=" + jugadores +
                 ", entrenadores=" + entrenadores +
-                ", partidosComoLocal=" + partidosComoLocal +
-                ", partidosComoVisitante=" + partidosComoVisitante +
                 '}';
     }
 }
-

@@ -7,49 +7,42 @@ public class EstadisticasJugador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_estadistica")
-    private Long idEstadistica;
+    private Integer id_estadistica;
 
     @ManyToOne
-    @JoinColumn(name = "id_jugador", nullable = false)
+    @JoinColumn(name = "id_jugador")
     private Jugador jugador;
 
     @ManyToOne
-    @JoinColumn(name = "id_partido", nullable = false)
+    @JoinColumn(name = "id_partido")
     private Partido partido;
 
-    @Column(name = "minutos_jugados")
-    private int minutosJugados;
-
-    private int goles;
-    private int asistencias;
-
-    @Column(name = "tarjetas_amarillas")
-    private int tarjetasAmarillas;
-
-    @Column(name = "tarjetas_rojas")
-    private int tarjetasRojas;
+    private Integer minutos_jugados;
+    private Integer goles;
+    private Integer asistencias;
+    private Integer tarjetas_amarillas;
+    private Integer tarjetas_rojas;
 
     public EstadisticasJugador() {
     }
 
-    public EstadisticasJugador(Long idEstadistica, Jugador jugador, Partido partido, int minutosJugados, int goles, int asistencias, int tarjetasAmarillas, int tarjetasRojas) {
-        this.idEstadistica = idEstadistica;
+    public EstadisticasJugador(Integer id_estadistica, Jugador jugador, Partido partido, Integer minutos_jugados, Integer goles, Integer asistencias, Integer tarjetas_amarillas, Integer tarjetas_rojas) {
+        this.id_estadistica = id_estadistica;
         this.jugador = jugador;
         this.partido = partido;
-        this.minutosJugados = minutosJugados;
+        this.minutos_jugados = minutos_jugados;
         this.goles = goles;
         this.asistencias = asistencias;
-        this.tarjetasAmarillas = tarjetasAmarillas;
-        this.tarjetasRojas = tarjetasRojas;
+        this.tarjetas_amarillas = tarjetas_amarillas;
+        this.tarjetas_rojas = tarjetas_rojas;
     }
 
-    public Long getIdEstadistica() {
-        return idEstadistica;
+    public Integer getId_estadistica() {
+        return id_estadistica;
     }
 
-    public void setIdEstadistica(Long idEstadistica) {
-        this.idEstadistica = idEstadistica;
+    public void setId_estadistica(Integer id_estadistica) {
+        this.id_estadistica = id_estadistica;
     }
 
     public Jugador getJugador() {
@@ -68,57 +61,57 @@ public class EstadisticasJugador {
         this.partido = partido;
     }
 
-    public int getMinutosJugados() {
-        return minutosJugados;
+    public Integer getMinutos_jugados() {
+        return minutos_jugados;
     }
 
-    public void setMinutosJugados(int minutosJugados) {
-        this.minutosJugados = minutosJugados;
+    public void setMinutos_jugados(Integer minutos_jugados) {
+        this.minutos_jugados = minutos_jugados;
     }
 
-    public int getGoles() {
+    public Integer getGoles() {
         return goles;
     }
 
-    public void setGoles(int goles) {
+    public void setGoles(Integer goles) {
         this.goles = goles;
     }
 
-    public int getAsistencias() {
+    public Integer getAsistencias() {
         return asistencias;
     }
 
-    public void setAsistencias(int asistencias) {
+    public void setAsistencias(Integer asistencias) {
         this.asistencias = asistencias;
     }
 
-    public int getTarjetasAmarillas() {
-        return tarjetasAmarillas;
+    public Integer getTarjetas_amarillas() {
+        return tarjetas_amarillas;
     }
 
-    public void setTarjetasAmarillas(int tarjetasAmarillas) {
-        this.tarjetasAmarillas = tarjetasAmarillas;
+    public void setTarjetas_amarillas(Integer tarjetas_amarillas) {
+        this.tarjetas_amarillas = tarjetas_amarillas;
     }
 
-    public int getTarjetasRojas() {
-        return tarjetasRojas;
+    public Integer getTarjetas_rojas() {
+        return tarjetas_rojas;
     }
 
-    public void setTarjetasRojas(int tarjetasRojas) {
-        this.tarjetasRojas = tarjetasRojas;
+    public void setTarjetas_rojas(Integer tarjetas_rojas) {
+        this.tarjetas_rojas = tarjetas_rojas;
     }
 
     @Override
     public String toString() {
         return "EstadisticasJugador{" +
-                "idEstadistica=" + idEstadistica +
+                "id_estadistica=" + id_estadistica +
                 ", jugador=" + jugador +
                 ", partido=" + partido +
-                ", minutosJugados=" + minutosJugados +
+                ", minutos_jugados=" + minutos_jugados +
                 ", goles=" + goles +
                 ", asistencias=" + asistencias +
-                ", tarjetasAmarillas=" + tarjetasAmarillas +
-                ", tarjetasRojas=" + tarjetasRojas +
+                ", tarjetas_amarillas=" + tarjetas_amarillas +
+                ", tarjetas_rojas=" + tarjetas_rojas +
                 '}';
     }
 }
