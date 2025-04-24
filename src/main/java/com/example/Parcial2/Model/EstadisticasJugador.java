@@ -10,11 +10,11 @@ public class EstadisticasJugador {
     private Integer id_estadistica;
 
     @ManyToOne
-    @JoinColumn(name = "id_jugador")
+    @JoinColumn(name = "id_jugador", nullable = false)
     private Jugador jugador;
 
     @ManyToOne
-    @JoinColumn(name = "id_partido")
+    @JoinColumn(name = "id_partido", nullable = false)
     private Partido partido;
 
     private Integer minutos_jugados;

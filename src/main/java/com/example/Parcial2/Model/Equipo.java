@@ -1,6 +1,7 @@
 package com.example.Parcial2.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -19,22 +20,32 @@ public class Equipo {
     private String ciudad;
     private LocalDate fundacion;
 
-    @OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "equipo")
+    @JsonManagedReference
     private List<Jugador> jugadores;
 
-    @OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "equipo")
     private List<Entrenador> entrenadores;
+
+    @OneToMany(mappedBy = "equipoLocal")
+    private List<Partido> partidosLocal;
+
+    @OneToMany(mappedBy = "equipoVisita")
+    private List<Partido> partidosVisita;
+
 
     public Equipo() {
     }
 
-    public Equipo(Integer id_equipo, String nombre, String ciudad, LocalDate fundacion, List<Jugador> jugadores, List<Entrenador> entrenadores) {
+    public Equipo(Integer id_equipo, String nombre, String ciudad, LocalDate fundacion, List<Jugador> jugadores, List<Entrenador> entrenadores, List<Partido> partidosLocal, List<Partido> partidosVisita) {
         this.id_equipo = id_equipo;
         this.nombre = nombre;
         this.ciudad = ciudad;
         this.fundacion = fundacion;
         this.jugadores = jugadores;
         this.entrenadores = entrenadores;
+        this.partidosLocal = partidosLocal;
+        this.partidosVisita = partidosVisita;
     }
 
     public Integer getId_equipo() {
@@ -85,6 +96,22 @@ public class Equipo {
         this.entrenadores = entrenadores;
     }
 
+    public List<Partido> getPartidosLocal() {
+        return partidosLocal;
+    }
+
+    public void setPartidosLocal(List<Partido> partidosLocal) {
+        this.partidosLocal = partidosLocal;
+    }
+
+    public List<Partido> getPartidosVisita() {
+        return partidosVisita;
+    }
+
+    public void setPartidosVisita(List<Partido> partidosVisita) {
+        this.partidosVisita = partidosVisita;
+    }
+
     @Override
     public String toString() {
         return "Equipo{" +
@@ -94,6 +121,8 @@ public class Equipo {
                 ", fundacion=" + fundacion +
                 ", jugadores=" + jugadores +
                 ", entrenadores=" + entrenadores +
+                ", partidosLocal=" + partidosLocal +
+                ", partidosVisita=" + partidosVisita +
                 '}';
     }
 }

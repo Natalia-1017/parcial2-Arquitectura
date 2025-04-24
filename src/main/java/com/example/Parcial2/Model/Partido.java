@@ -17,17 +17,17 @@ public class Partido {
     private String estadio;
 
     @ManyToOne
-    @JoinColumn(name = "equipo_local")
+    @JoinColumn(name = "equipo_local", nullable = false)
     private Equipo equipoLocal;
 
     @ManyToOne
-    @JoinColumn(name = "equipo_visita")
+    @JoinColumn(name = "equipo_visita", nullable = false)
     private Equipo equipoVisita;
 
     private Integer goles_local;
     private Integer goles_visita;
 
-    @OneToMany(mappedBy = "partido", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "partido")
     private List<EstadisticasJugador> estadisticas;
 
     public Partido() {

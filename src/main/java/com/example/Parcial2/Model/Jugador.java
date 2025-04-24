@@ -1,5 +1,6 @@
 package com.example.Parcial2.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -24,10 +25,11 @@ public class Jugador {
     private String nacionalidad;
 
     @ManyToOne
-    @JoinColumn(name = "id_equipo")
+    @JoinColumn(name = "id_equipo", nullable = false)
+    @JsonBackReference
     private Equipo equipo;
 
-    @OneToMany(mappedBy = "jugador", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "jugador")
     private List<EstadisticasJugador> estadisticas;
 
     public Jugador() {
